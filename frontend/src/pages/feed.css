@@ -1,0 +1,89 @@
+body {
+  background: #a8c4c4;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 20px;
+  background: rgb(215, 224, 241);
+  border-bottom: 1px solid #ddd;
+  position: sticky;
+  top: 0;
+}
+
+.logo {
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.profile {
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.feed-container {
+  max-width: 500px;
+  margin: auto;
+  padding: 20px;
+}
+
+/* CREATE POST */
+.create-post-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60px;
+  background: white;
+  border-radius: 15px;
+  margin-bottom: 20px;
+  cursor: pointer;
+  font-size: 30px;
+  color: #0095f6;
+}
+
+/* POST CARD */
+.post-card {
+  background: white;
+  border-radius: 15px;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+}
+
+.post-header {
+  padding: 10px;
+  font-weight: bold;
+}
+
+.post-image {
+  width: 100%;
+}
+
+.post-actions {
+  padding: 10px;
+}
+
+.post-actions button {
+  border: none;
+  background: none;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+/* COMMENTS */
+.comment-section {
+  padding: 10px;
+}
+
+.comment {
+  font-size: 14px;
+}
+
+.comment-input {
+  display: flex;
+  gap: 10px;
+}
+
+.comment-input input {
+  flex: 1;
+}
