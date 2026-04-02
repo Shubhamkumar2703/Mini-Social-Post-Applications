@@ -1,15 +1,28 @@
+/* GLOBAL */
 body {
-  background: #a8c4c4;
+  margin: 0;
+  font-family: "Segoe UI", sans-serif;
+  background: #fafafa;
+  display: flex;
+  justify-content: center; /* 🔥 center whole app */
 }
 
+/* ROOT WRAPPER */
+#root {
+  width: 100%;
+  max-width: 900px; /* side gap */
+}
+
+/* NAVBAR */
 .navbar {
   display: flex;
   justify-content: space-between;
-  padding: 10px 20px;
-  background: rgb(215, 224, 241);
+  padding: 12px 20px;
+  background: rgb(201, 202, 204);
   border-bottom: 1px solid #ddd;
   position: sticky;
   top: 0;
+  z-index: 10;
 }
 
 .logo {
@@ -20,54 +33,161 @@ body {
 .profile {
   font-size: 14px;
   cursor: pointer;
+  color: #555;
 }
 
+/* FEED */
 .feed-container {
-  max-width: 500px;
-  margin: auto;
+  max-width: 600px;   /* 🔥 control width */
+  margin: 0 auto;     /* center */
   padding: 20px;
 }
 
-/* CREATE POST */
-.create-post-btn {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 60px;
-  background: white;
-  border-radius: 15px;
-  margin-bottom: 20px;
-  cursor: pointer;
-  font-size: 30px;
-  color: #0095f6;
-}
+/* ================= CREATE POST ================= */
 
-/* POST CARD */
-.post-card {
-  background: white;
+.create-post-card {
+  background: rgb(255, 255, 255);
   border-radius: 15px;
-  margin-bottom: 20px;
+  padding: 15px;
+  margin: 0 auto 20px;   
+  max-width: 500px;     
   border: 1px solid #ddd;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
 }
 
+/* HEADER */
+.create-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.create-header h3 {
+  margin: 0;
+}
+
+/* TABS */
+.tabs span {
+  margin-left: 10px;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  cursor: pointer;
+  background: #f0f2f5;
+}
+
+.tabs .active {
+  background: #0095f6;
+  color: white;
+}
+
+/* INPUT */
+.create-input input {
+  width: 100%;
+  border: none;
+  outline: none;
+  padding: 12px 0;
+  font-size: 15px;
+}
+
+/* IMAGE PREVIEW */
+.image-preview img {
+  width: 100%;
+  border-radius: 12px;
+  margin-top: 10px;
+}
+
+/* ACTION BAR */
+.create-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+
+/* LEFT ICONS */
+.left-icons {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+/* UPLOAD BUTTON */
+.upload-btn {
+  background: #f0f2f5;
+  padding: 6px 12px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 13px;
+  transition: 0.2s;
+}
+
+.upload-btn:hover {
+  background: #e4e6eb;
+}
+
+/* POST BUTTON */
+.post-btn {
+  background: #0095f6;
+  color: white;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.post-btn:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+.post-btn:hover {
+  background: #0077cc;
+}
+
+/* ================= POST CARD ================= */
+
+.post-card {
+  background: rgb(205, 224, 225);
+  border-radius: 15px;
+  margin: 0 auto 20px;   /* 🔥 center */
+  max-width: 500px;      /* 🔥 fixed width */
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  transition: 0.2s;
+}
+
+.post-card:hover {
+  transform: translateY(-3px);
+}
+
+/* HEADER */
 .post-header {
-  padding: 10px;
+  padding: 12px;
   font-weight: bold;
+  display: flex;
+  justify-content: space-between;
 }
 
+/* IMAGE */
 .post-image {
   width: 100%;
+  border-radius: 10px;
 }
 
+/* ACTIONS */
 .post-actions {
   padding: 10px;
+  display: flex;
+  gap: 15px;
 }
 
 .post-actions button {
   border: none;
   background: none;
-  margin-right: 10px;
   cursor: pointer;
+  font-size: 14px;
 }
 
 /* COMMENTS */
@@ -77,13 +197,41 @@ body {
 
 .comment {
   font-size: 14px;
+  margin-bottom: 5px;
 }
 
 .comment-input {
   display: flex;
   gap: 10px;
+  margin-top: 5px;
 }
 
 .comment-input input {
   flex: 1;
+  border: none;
+  outline: none;
+  background: #f0f2f5;
+  padding: 8px;
+  border-radius: 10px;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 768px) {
+  body {
+    display: block;
+  }
+
+  #root {
+    max-width: 100%;
+  }
+
+  .feed-container {
+    padding: 10px;
+  }
+
+  .post-card,
+  .create-post-card {
+    max-width: 100%; /* full width on mobile */
+  }
 }

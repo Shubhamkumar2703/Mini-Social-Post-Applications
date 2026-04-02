@@ -62,24 +62,63 @@ const Feed = ({ setUser }) => {
         </div>
       </div>
 
-      <div className="feed-container">
+    <div className="feed-container">
 
-        {/* CREATE POST BUTTON */}
-        <div className="create-post-btn" onClick={() => setShowPostBox(true)}>
-          +
-        </div>
+  <div className="create-post-card">
 
-        {showPostBox && (
-          <div>
-            <input
-              placeholder="Write something..."
-              value={text}
-              onChange={(e) => setText(e.target.value)}
-            />
-            <input type="file" onChange={(e) => setImage(e.target.files[0])} />
-            <button onClick={createPost}>Post</button>
-          </div>
-        )}
+    {/* HEADER */}
+    <div className="create-header">
+      <h3>Create Post</h3>
+      <div className="tabs">
+        <span className="active">All Posts</span>
+      </div>
+    </div>
+
+    {/* INPUT */}
+    <div className="create-input">
+      <input
+        placeholder="What's on your mind?"
+        value={text}
+        onChange={(e) => setText(e.target.value)}
+      />
+    </div>
+
+    {/* IMAGE NAME PREVIEW */}
+    {image && (
+      <div className="file-preview">
+        📷 {image.name}
+      </div>
+    )}
+
+    {/* ACTIONS */}
+    <div className="create-actions">
+
+      {/* LEFT SIDE ICONS */}
+      <div className="left-icons">
+        <label className="upload-btn">
+          ➕ Upload
+          <input
+            type="file"
+            hidden
+            onChange={(e) => setImage(e.target.files[0])}
+          />
+        </label>
+      </div>
+
+      {/* RIGHT SIDE POST BUTTON */}
+      <button 
+        className="post-btn"
+        disabled={!text && !image}
+        onClick={createPost}
+      >
+        Post
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
 
         {/* POSTS */}
         {posts.map((p) => (
@@ -88,7 +127,7 @@ const Feed = ({ setUser }) => {
             <div className="post-header">
               {p.username}
               {user.id === p.userId && (
-                <button onClick={() => deletePost(p._id)}>🗑</button>
+                <button onClick={() => deletePost(p._id)}>🗑️</button>
               )}
             </div>
 
@@ -123,7 +162,6 @@ const Feed = ({ setUser }) => {
 
           </div>
         ))}
-      </div>
     </>
   );
 };
