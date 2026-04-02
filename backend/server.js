@@ -8,11 +8,15 @@ const app = express();
 connectDB();
 
 app.use(cors({
-  origin: "*", // for now ok
-  methods: ["GET", "POST", "PUT", "DELETE"],
+  origin: "*",  
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"]
 }));
+
 app.use(express.json());
+
+
+app.options("*", cors());
 
 app.use("/api/auth", require("./routes/authRoutes"));
 app.use("/api/posts", require("./routes/postRoutes"));
