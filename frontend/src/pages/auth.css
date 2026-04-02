@@ -1,6 +1,5 @@
 body {
   margin: 0;
-  background-color: #ddd;
   font-family: "Poppins", sans-serif;
   background: linear-gradient(135deg, #fd5949, #d6249f, #285AEB);
 }
@@ -13,7 +12,7 @@ body {
 }
 
 .auth-card {
-  background: rgb(163, 167, 168);
+  background: rgb(255, 255, 255);
   padding: 40px;
   border-radius: 20px;
   width: 320px;
