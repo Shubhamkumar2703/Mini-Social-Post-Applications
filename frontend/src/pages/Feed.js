@@ -5,7 +5,6 @@ import "./feed.css";
 
 const Feed = ({ setUser }) => {
   const [posts, setPosts] = useState([]);
-  const [showPostBox, setShowPostBox] = useState(false);
   const [text, setText] = useState("");
   const [image, setImage] = useState(null);
 
@@ -26,7 +25,6 @@ const Feed = ({ setUser }) => {
 
     await API.post("/posts", { text, imageUrl });
 
-    setShowPostBox(false);
     setText("");
     setImage(null);
     fetchPosts();
@@ -62,63 +60,54 @@ const Feed = ({ setUser }) => {
         </div>
       </div>
 
-    <div className="feed-container">
+      <div className="feed-container">
 
-  <div className="create-post-card">
+        {/* CREATE POST */}
+        <div className="create-post-card">
 
-    {/* HEADER */}
-    <div className="create-header">
-      <h3>Create Post</h3>
-      <div className="tabs">
-        <span className="active">All Posts</span>
-      </div>
-    </div>
+          <div className="create-header">
+            <h3>Create Post</h3>
+            <div className="tabs">
+              <span className="active">All Posts</span>
+            </div>
+          </div>
 
-    {/* INPUT */}
-    <div className="create-input">
-      <input
-        placeholder="What's on your mind?"
-        value={text}
-        onChange={(e) => setText(e.target.value)}
-      />
-    </div>
+          <div className="create-input">
+            <input
+              placeholder="What's on your mind?"
+              value={text}
+              onChange={(e) => setText(e.target.value)}
+            />
+          </div>
 
-    {/* IMAGE NAME PREVIEW */}
-    {image && (
-      <div className="file-preview">
-        📷 {image.name}
-      </div>
-    )}
+          {image && (
+            <div className="file-preview">
+              📷 {image.name}
+            </div>
+          )}
 
-    {/* ACTIONS */}
-    <div className="create-actions">
+          <div className="create-actions">
+            <div className="left-icons">
+              <label className="upload-btn">
+                ➕ Upload
+                <input
+                  type="file"
+                  hidden
+                  onChange={(e) => setImage(e.target.files[0])}
+                />
+              </label>
+            </div>
 
-      {/* LEFT SIDE ICONS */}
-      <div className="left-icons">
-        <label className="upload-btn">
-          ➕ Upload
-          <input
-            type="file"
-            hidden
-            onChange={(e) => setImage(e.target.files[0])}
-          />
-        </label>
-      </div>
+            <button
+              className="post-btn"
+              disabled={!text && !image}
+              onClick={createPost}
+            >
+              Post
+            </button>
+          </div>
 
-      {/* RIGHT SIDE POST BUTTON */}
-      <button 
-        className="post-btn"
-        disabled={!text && !image}
-        onClick={createPost}
-      >
-        Post
-      </button>
-
-    </div>
-
-  </div>
-
-</div>
+        </div>
 
         {/* POSTS */}
         {posts.map((p) => (
@@ -133,7 +122,10 @@ const Feed = ({ setUser }) => {
 
             <div>{p.text}</div>
 
-            {p.imageUrl && <img src={p.imageUrl} className="post-image" />}
+            {/* ✅ FIXED ALT */}
+            {p.imageUrl && (
+              <img src={p.imageUrl} alt="post" className="post-image" />
+            )}
 
             <div className="post-actions">
               <button onClick={() => likePost(p._id)}>
@@ -162,6 +154,7 @@ const Feed = ({ setUser }) => {
 
           </div>
         ))}
+      </div>
     </>
   );
 };
